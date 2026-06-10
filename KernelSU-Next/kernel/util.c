@@ -37,7 +37,7 @@ bool try_set_access_flag(unsigned long addr)
 	if (!mmap_read_trylock(mm))
 		return false;
 #else
-	if (!down_read_trylock(&mm->mmap_sem))
+	if (!mmap_read_trylock(mm))
 		return false;
 #endif
 
@@ -92,7 +92,7 @@ out_unlock:
 #if LINUX_VERSION_CODE >= KERNEL_VERSION(5, 4, 208)
 	mmap_read_unlock(mm);
 #else
-	up_read(&mm->mmap_sem);
+        mmap_read_unlock(mm);
 #endif
 	return ret;
 #else
