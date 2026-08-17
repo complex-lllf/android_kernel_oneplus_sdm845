@@ -2,6 +2,18 @@
 #ifndef _LINUX_MMU_NOTIFIER_H
 #define _LINUX_MMU_NOTIFIER_H
 
+
+enum mmu_notifier_event {
+    MMU_NOTIFY_UNMAP = 0,
+    MMU_NOTIFY_CLEAR,
+    MMU_NOTIFY_TEST,
+    MMU_NOTIFY_SOFT_DIRTY,
+    MMU_NOTIFY_RELEASE,
+    MMU_NOTIFY_MIGRATE,
+    MMU_NOTIFY_EXCLUSIVE,
+    MMU_NOTIFY_PROTECTION_VMA,
+};
+
 #include <linux/types.h>
 #include <linux/list.h>
 #include <linux/spinlock.h>
